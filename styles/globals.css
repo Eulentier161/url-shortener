@@ -57,3 +57,12 @@ button:hover {
   outline-style: solid;
   outline-color: blueviolet;
 }
+
+.invalidUrl {
+  border-color: red;
+}
+.invalidUrl:focus {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: red;
+}

@@ -9,11 +9,12 @@ export default function Home() {
   });
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [newUrl, setNewUrl] = useState("");
+  const [urlIsValid, setUrlIsValid] = useState(true);
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setButtonDisabled(true);
-    setNewUrl("")
+    setNewUrl("");
     await axios
       .post("/api", data)
       .then((res) => {
@@ -47,14 +48,23 @@ export default function Home() {
         <p>
           destination:&nbsp;
           <input
-            placeholder="my destination"
+            className={urlIsValid ? "" : "invalidUrl"}
+            placeholder="https://github.com/Eulentier161/url-shortener"
             value={data.destination}
-            onChange={(e) => setData({ ...data, destination: e.target.value })}
+            onChange={(e) => {
+              setData({ ...data, destination: e.target.value });
+              setUrlIsValid(
+                e.target.value.startsWith("https://") ||
+                  e.target.value.startsWith("http://")
+              );
+            }}
           />
         </p>
         <p>
           <button
-            disabled={buttonDisabled || !data.destination || !data.slug}
+            disabled={
+              buttonDisabled || !urlIsValid || !data.destination || !data.slug
+            }
             onClick={(e) => handleSubmit(e)}
           >
             Submit
