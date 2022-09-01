@@ -21,7 +21,6 @@ export default function Home() {
         setNewUrl(res.data.url);
       })
       .catch((err) => {
-        console.log(err.response.status);
         if (err.response.status === 500) {
           setData({ ...data, slug: "" });
         } else if (err.response.status === 404) {
