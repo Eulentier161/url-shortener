@@ -7,10 +7,13 @@ export default function Home() {
     slug: "",
     destination: "",
   });
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const [newUrl, setNewUrl] = useState("");
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
+    setButtonDisabled(true);
+    setNewUrl("")
     await axios
       .post("/api", data)
       .then((res) => {
@@ -27,14 +30,15 @@ export default function Home() {
           setData({ destination: "", slug: "" });
         }
         toast.error(err.response.data.message);
-      });
+      })
+      .finally(() => setButtonDisabled(false));
   }
 
   return (
     <div>
-      <form>
+      <form className="container">
         <p>
-          slug:{" "}
+          https://eule.wtf/
           <input
             placeholder="slug"
             value={data.slug}
@@ -42,26 +46,31 @@ export default function Home() {
           />
         </p>
         <p>
-          destination:{" "}
+          destination:&nbsp;
           <input
             placeholder="my destination"
             value={data.destination}
             onChange={(e) => setData({ ...data, destination: e.target.value })}
           />
         </p>
-        <button
-          disabled={!data.destination || !data.slug}
-          onClick={(e) => handleSubmit(e)}
-        >
-          Submit
-        </button>
-      </form>
-      {newUrl ? (
         <p>
-          Try your new url: <a href={newUrl}>{newUrl}</a>
+          <button
+            disabled={buttonDisabled || !data.destination || !data.slug}
+            onClick={(e) => handleSubmit(e)}
+          >
+            Submit
+          </button>
         </p>
-      ) : null}
-      <ToastContainer />
+        {newUrl ? (
+          <p>
+            Try your new url:{" "}
+            <a href={newUrl} target="_blank" rel="noopener noreferrer">
+              {newUrl}
+            </a>
+          </p>
+        ) : null}
+      </form>
+      <ToastContainer position="bottom-right" theme="dark" />
     </div>
   );
 }

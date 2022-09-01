@@ -18,10 +18,14 @@ export default async function handler(
     return res.status(400).json({ message: "something went wrong" });
   }
 
-  try {
-    await axios.get(req.body.destination);
-  } catch {
-    return res.status(404).json({ message: "destination url not found" });
+  if (slug.includes("/")) {
+    return res.status(500).json({message: "slug can't contain '/'"})
+  }
+
+  if (
+    !destination.includes(".") || (!destination.startsWith("https://") && !destination.startsWith("http://"))
+  ) {
+    return res.status(404).json({ message: "destination url not valid" });
   }
 
   try {
@@ -32,5 +36,7 @@ export default async function handler(
     return res.status(500).json({ message: "slug is already taken" });
   }
 
-  return res.status(200).json({ message: "success!", url: `http://localhost:3000/${slug}`});
+  return res
+    .status(200)
+    .json({ message: "success!", url: `${req.headers.origin}/${slug}` });
 }
