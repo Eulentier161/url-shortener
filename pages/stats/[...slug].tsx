@@ -35,5 +35,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     if (url) {
       return { props: { url } };
     }
+    return { redirect: { destination: "/" } };
   }
 }
