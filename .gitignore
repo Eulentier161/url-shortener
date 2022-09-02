@@ -38,3 +38,4 @@ next-env.d.ts
 .env
 migrations/
 dev.db
+dev.db-journal
