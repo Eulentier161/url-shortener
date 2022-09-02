@@ -11,7 +11,7 @@ a counter of hits for slug is available at `/stats/slug`. example for this proje
 git clone https://github.com/Eulentier161/url-shortener.git
 cd url-shortener
 cp example.env .env
-docker-compose up
+sudo docker compose up -d
 ```
 default port for the web interface is `5678`  
 
