@@ -35,49 +35,53 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <form className="container">
-        <p>
-          https://eule.wtf/
-          <input
-            placeholder="slug"
-            value={data.slug}
-            onChange={(e) => setData({ ...data, slug: e.target.value })}
-          />
-        </p>
-        <p>
-          destination:&nbsp;
-          <input
-            className={urlIsValid ? "" : "invalidUrl"}
-            placeholder="https://github.com/Eulentier161/url-shortener"
-            value={data.destination}
-            onChange={(e) => {
-              setData({ ...data, destination: e.target.value });
-              setUrlIsValid(
-                e.target.value.startsWith("https://") ||
-                  e.target.value.startsWith("http://")
-              );
-            }}
-          />
-        </p>
-        <p>
-          <button
-            disabled={
-              buttonDisabled || !urlIsValid || !data.destination || !data.slug
-            }
-            onClick={(e) => handleSubmit(e)}
-          >
-            Submit
-          </button>
-        </p>
-        {newUrl ? (
+    <div className="container">
+      
+      <form >
+      {newUrl ? (
           <p>
             Try your new url:{" "}
             <a href={newUrl} target="_blank" rel="noopener noreferrer">
               {newUrl}
             </a>
           </p>
-        ) : null}
+        ) : (<>
+        <p>
+        NAME?<br></br>
+        <input
+          placeholder="slug"
+          value={data.slug}
+          onChange={(e) => setData({ ...data, slug: e.target.value })}
+        />
+      </p>
+      <p>
+        WHERE <b>TO</b>?<br></br>
+        <input
+          className={urlIsValid ? "" : "invalidUrl"}
+          placeholder="https://github.com/Eulentier161/url-shortener"
+          value={data.destination}
+          onChange={(e) => {
+            setData({ ...data, destination: e.target.value });
+            setUrlIsValid(
+              e.target.value.startsWith("https://") ||
+                e.target.value.startsWith("http://")
+            );
+          }}
+        />
+      </p>
+      <p>
+        <button
+          disabled={
+            buttonDisabled || !urlIsValid || !data.destination || !data.slug
+          }
+          onClick={(e) => handleSubmit(e)}
+        >
+          <b>GENERATE</b>
+        </button>
+      </p>
+        </>)}
+        
+        
       </form>
       <ToastContainer position="bottom-right" theme="dark" />
     </div>
