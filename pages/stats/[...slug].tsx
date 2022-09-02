@@ -2,7 +2,11 @@ import { Redirect, Url } from "@prisma/client";
 import { GetServerSidePropsContext } from "next";
 import prisma from "../../prisma/client";
 
-export default function Stat({ url }: { url: Url & { redirects: Redirect[] } }) {
+export default function Stat({
+  url,
+}: {
+  url: Url & { redirects: Redirect[] };
+}) {
   return (
     <div className="container">
       <form>

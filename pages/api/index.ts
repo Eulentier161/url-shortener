@@ -1,4 +1,3 @@
-import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../prisma/client";
 
@@ -19,11 +18,12 @@ export default async function handler(
   }
 
   if (slug.includes("/")) {
-    return res.status(500).json({message: "slug can't contain '/'"})
+    return res.status(500).json({ message: "slug can't contain '/'" });
   }
 
   if (
-    !destination.includes(".") || (!destination.startsWith("https://") && !destination.startsWith("http://"))
+    !destination.includes(".") ||
+    (!destination.startsWith("https://") && !destination.startsWith("http://"))
   ) {
     return res.status(404).json({ message: "destination url not valid" });
   }
