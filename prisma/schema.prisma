@@ -11,7 +11,15 @@ datasource db {
 }
 
 model Url {
-  id          Int    @id @default(autoincrement())
-  slug        String @unique
+  id          Int        @id @default(autoincrement())
+  slug        String     @unique
   destination String
+  redirects   Redirect[]
+}
+
+model Redirect {
+  id        Int @id @default(autoincrement())
+  urlId     Int
+  url       Url @relation(fields: [urlId], references: [id])
+  timestamp String
 }
