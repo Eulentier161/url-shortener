@@ -1,33 +1,41 @@
-import axios from "axios";
-import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import axios from 'axios';
+import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function Home() {
   const [data, setData] = useState({
-    slug: "",
-    destination: "",
+    slug: '',
+    destination: '',
   });
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [newUrl, setNewUrl] = useState("");
+  const [newUrl, setNewUrl] = useState('');
   const [urlIsValid, setUrlIsValid] = useState(true);
+
+  function validateUrl(url: string) {
+    if (!/https?:\/\//.test(url)) return false;
+    if (url.includes(`://${window.location.hostname}`)) return false;
+    if (!url.includes('.')) return false;
+    if (url.endsWith('.')) return false;
+    return true;
+  }
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setButtonDisabled(true);
-    setNewUrl("");
+    setNewUrl('');
     await axios
-      .post("/api", data)
+      .post('/api', data)
       .then((res) => {
         toast(res.data.message);
         setNewUrl(res.data.url);
       })
       .catch((err) => {
         if (err.response.status === 500) {
-          setData({ ...data, slug: "" });
+          setData({ ...data, slug: '' });
         } else if (err.response.status === 404) {
-          setData({ ...data, destination: "" });
+          setData({ ...data, destination: '' });
         } else {
-          setData({ destination: "", slug: "" });
+          setData({ destination: '', slug: '' });
         }
         toast.error(err.response.data.message);
       })
@@ -35,12 +43,12 @@ export default function Home() {
   }
 
   return (
-    <div className="container">
+    <div className='container'>
       <form>
         {newUrl ? (
           <p>
-            Try your new url:{" "}
-            <a href={newUrl} target="_blank" rel="noopener noreferrer">
+            Try your new url:{' '}
+            <a href={newUrl} target='_blank' rel='noopener noreferrer'>
               {newUrl}
             </a>
           </p>
@@ -49,7 +57,7 @@ export default function Home() {
             <p>
               NAME?<br></br>
               <input
-                placeholder="slug"
+                placeholder='slug'
                 value={data.slug}
                 onChange={(e) => setData({ ...data, slug: e.target.value })}
               />
@@ -57,15 +65,12 @@ export default function Home() {
             <p>
               WHERE <b>TO</b>?<br></br>
               <input
-                className={urlIsValid ? "" : "invalidUrl"}
-                placeholder="https://github.com/Eulentier161/url-shortener"
+                className={urlIsValid ? '' : 'invalidUrl'}
+                placeholder='https://github.com/Eulentier161/url-shortener'
                 value={data.destination}
                 onChange={(e) => {
                   setData({ ...data, destination: e.target.value });
-                  setUrlIsValid(
-                    e.target.value.startsWith("https://") ||
-                      e.target.value.startsWith("http://")
-                  );
+                  setUrlIsValid(validateUrl(e.target.value));
                 }}
               />
             </p>
@@ -85,7 +90,7 @@ export default function Home() {
           </>
         )}
       </form>
-      <ToastContainer position="bottom-right" theme="dark" />
+      <ToastContainer position='bottom-right' theme='dark' />
     </div>
   );
 }
