@@ -1,5 +1,5 @@
-import { GetServerSidePropsContext } from "next";
-import prisma from "../prisma/client";
+import { GetServerSidePropsContext } from 'next';
+import prisma from '../prisma/client';
 
 export default function Redirector() {}
 
@@ -7,9 +7,9 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const slug = ctx.query.slug;
   if (
     slug &&
-    typeof slug === "object" &&
+    typeof slug === 'object' &&
     slug.length === 1 &&
-    typeof slug[0] === "string"
+    typeof slug[0] === 'string'
   ) {
     const url = await prisma.url.findUnique({ where: { slug: slug[0] } });
 
@@ -21,8 +21,8 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       await prisma.redirect.create({
         data: redirect,
       });
-      return { redirect: { destination: url.destination } };
+      return { redirect: { destination: url.destination, permanent: true } };
     }
   }
-  return { redirect: { destination: "/" } };
+  return { redirect: { destination: '/' } };
 }
