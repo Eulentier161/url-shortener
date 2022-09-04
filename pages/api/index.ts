@@ -1,5 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../prisma/client";
+import { NextApiRequest, NextApiResponse } from 'next';
+import prisma from '../../prisma/client';
+import { validateSlug, validateUrl } from '../../utils/validators';
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,22 +11,19 @@ export default async function handler(
   if (
     !destination ||
     !slug ||
-    typeof destination !== "string" ||
-    typeof slug !== "string" ||
-    req.method !== "POST"
+    typeof destination !== 'string' ||
+    typeof slug !== 'string' ||
+    req.method !== 'POST'
   ) {
-    return res.status(400).json({ message: "something went wrong" });
+    return res.status(400).json({ message: 'something went wrong' });
   }
 
-  if (slug.includes("/")) {
-    return res.status(500).json({ message: "slug can't contain '/'" });
+  if (!validateSlug(slug)) {
+    return res.status(500).json({ message: 'invalid slug' });
   }
 
-  if (
-    !destination.includes(".") ||
-    (!destination.startsWith("https://") && !destination.startsWith("http://"))
-  ) {
-    return res.status(404).json({ message: "destination url not valid" });
+  if (!validateUrl(destination)) {
+    return res.status(404).json({ message: 'invalid destination url' });
   }
 
   try {
@@ -33,10 +31,10 @@ export default async function handler(
       data: { destination, slug },
     });
   } catch (err) {
-    return res.status(500).json({ message: "slug is already taken" });
+    return res.status(500).json({ message: 'slug is already taken' });
   }
 
   return res
     .status(200)
-    .json({ message: "success!", url: `${req.headers.origin}/${slug}` });
+    .json({ message: 'success!', url: `${req.headers.origin}/${slug}` });
 }

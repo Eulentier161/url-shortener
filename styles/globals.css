@@ -59,13 +59,29 @@ input:focus {
   outline-color: blueviolet;
 }
 
-button {
+.btn-disabled {
+  border: 3px solid black;
+  font-size: xx-large;
+  border-radius: 15px;
+  padding: 0.7em;
+  background-color: rgb(146, 146, 146);
+  outline: 1px solid red;
+  color: black;
+}
+
+.btn-enabled {
   border: 3px solid black;
   font-size: xx-large;
   border-radius: 15px;
   padding: 0.7em;
   background-color: rgb(66, 123, 95);
+  outline: 1px solid rgb(66, 123, 95);
   color: black;
+}
+
+.btn-disabled:hover {
+  background-color: red;
+  transition: 0.4s;
 }
 
 button:hover {
@@ -73,10 +89,11 @@ button:hover {
   transition: 0.4s;
 }
 
-.invalidUrl {
+.invalidInput {
   border-color: red;
 }
-.invalidUrl:focus {
+
+.invalidInput:focus {
   outline-width: 1px;
   outline-style: solid;
   outline-color: red;

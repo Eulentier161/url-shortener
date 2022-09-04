@@ -12,14 +12,14 @@ datasource db {
 
 model Url {
   id          Int        @id @default(autoincrement())
-  slug        String     @unique
+  slug        String     @unique @db.VarChar(256)
   destination String
   redirects   Redirect[]
 }
 
 model Redirect {
-  id        Int @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   urlId     Int
-  url       Url @relation(fields: [urlId], references: [id])
+  url       Url    @relation(fields: [urlId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   timestamp String
 }
