@@ -13,16 +13,20 @@ cd url-shortener
 cp example.env .env
 sudo docker compose up -d
 ```
-default port for the web interface is `5678`  
+
+default port for the web interface is `5678`
 
 ### without docker
+
 ```console
 git clone https://github.com/Eulentier161/url-shortener.git
 cd url-shortener
 cp example.env .env
 nano .env
 ```
+
 change the `DATABASE_URL` to a valid postgresql connection and save.
+
 ```console
 pnpm install
 pnpm build

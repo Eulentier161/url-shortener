@@ -27,23 +27,17 @@ export default function Home() {
       });
   }, 500);
 
-  const handleSlugInput = useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSlugIsAvailable(null);
-      setSlug(e.target.value);
-      setSlugIsValid(validateSlug(e.target.value));
-      checkSlugAvailability(e.target.value);
-    },
-    []
-  );
+  const handleSlugInput = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSlugIsAvailable(null);
+    setSlug(e.target.value);
+    setSlugIsValid(validateSlug(e.target.value));
+    checkSlugAvailability(e.target.value);
+  }, []);
 
-  const handleDestinationInput = useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      setDestination(e.target.value);
-      setUrlIsValid(validateUrl(e.target.value));
-    },
-    []
-  );
+  const handleDestinationInput = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDestination(e.target.value);
+    setUrlIsValid(validateUrl(e.target.value));
+  }, []);
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
