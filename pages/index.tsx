@@ -1,38 +1,67 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, ReactFragment } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { validateSlug, validateUrl } from '../utils/validators';
+import debounce from 'lodash.debounce';
 
 export default function Home() {
-  const [data, setData] = useState({
-    slug: '',
-    destination: '',
-  });
+  const [slug, setSlug] = useState('');
+  const [destination, setDestination] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [newUrl, setNewUrl] = useState('');
+  const [slugIsAvailable, setSlugIsAvailable] = useState<boolean | null>(null);
   const [slugIsValid, setSlugIsValid] = useState(false);
   const [urlIsValid, setUrlIsValid] = useState(false);
 
   useEffect(() => {
-    setButtonDisabled(!(slugIsValid && urlIsValid));
-  }, [slugIsValid, urlIsValid]);
+    setButtonDisabled(!(slugIsValid && urlIsValid && slugIsAvailable));
+  }, [slugIsValid, urlIsValid, slugIsAvailable]);
+
+  const checkSlugAvailability = debounce((slug: string) => {
+    axios
+      .get('/api/slug-available', {
+        params: { slug },
+      })
+      .then((res) => {
+        setSlugIsAvailable(res.data);
+      });
+  }, 500);
+
+  const handleSlugInput = useCallback(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSlugIsAvailable(null);
+      setSlug(e.target.value);
+      setSlugIsValid(validateSlug(e.target.value));
+      checkSlugAvailability(e.target.value);
+    },
+    []
+  );
+
+  const handleDestinationInput = useCallback(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      setDestination(e.target.value);
+      setUrlIsValid(validateUrl(e.target.value));
+    },
+    []
+  );
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setButtonDisabled(true);
     await axios
-      .post('/api', data)
+      .post('/api', { slug, destination })
       .then((res) => {
         toast(res.data.message);
         setNewUrl(res.data.url);
       })
       .catch((err) => {
         if (err.response.status === 500) {
-          setData({ ...data, slug: '' });
+          setSlug('');
         } else if (err.response.status === 404) {
-          setData({ ...data, destination: '' });
+          setDestination('');
         } else {
-          setData({ destination: '', slug: '' });
+          setSlug('');
+          setDestination('');
         }
         toast.error(err.response.data.message);
       })
@@ -53,9 +82,11 @@ export default function Home() {
             <button
               className='btn-enabled'
               onClick={() => {
-                setData({ destination: '', slug: '' });
+                setSlug('');
+                setDestination('');
                 setSlugIsValid(false);
                 setUrlIsValid(false);
+                setSlugIsAvailable(null);
                 setNewUrl('');
               }}
             >
@@ -67,13 +98,10 @@ export default function Home() {
             <p>
               NAME?<br></br>
               <input
-                className={slugIsValid ? '' : 'invalidInput'}
+                className={slugIsValid && slugIsAvailable ? '' : 'invalidInput'}
                 placeholder='slug'
-                value={data.slug}
-                onChange={(e) => {
-                  setData({ ...data, slug: e.target.value });
-                  setSlugIsValid(validateSlug(e.target.value));
-                }}
+                value={slug}
+                onChange={handleSlugInput}
               />
             </p>
             <p>
@@ -81,18 +109,15 @@ export default function Home() {
               <input
                 className={urlIsValid ? '' : 'invalidInput'}
                 placeholder='https://github.com/Eulentier161/url-shortener'
-                value={data.destination}
-                onChange={(e) => {
-                  setData({ ...data, destination: e.target.value });
-                  setUrlIsValid(validateUrl(e.target.value));
-                }}
+                value={destination}
+                onChange={handleDestinationInput}
               />
             </p>
             <p>
               <button
                 className={buttonDisabled ? 'btn-disabled' : 'btn-enabled'}
                 disabled={buttonDisabled}
-                onClick={(e) => handleSubmit(e)}
+                onClick={handleSubmit}
               >
                 <b>GENERATE</b>
               </button>
