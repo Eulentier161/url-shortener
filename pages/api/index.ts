@@ -39,5 +39,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ message: 'slug is already taken' });
   }
 
-  return res.status(200).json({ message: 'success!', url: `${req.headers.host}/${slug}` });
+  return res.status(200).json({ message: 'success!', url: `http://${req.headers.host}/${slug}` });
 }
