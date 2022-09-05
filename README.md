@@ -1,7 +1,13 @@
 # url shortener
 
-[bit.ly](https://bitly.com/) like url-shortener / redirector. test it on [eule.wtf](https://eule.wtf)  
+[bit.ly](https://bitly.com/) like url-shortener / redirector.
 a counter of hits for slug is available at `/stats/slug`. example for this projects redirect: [eule.wtf/stats/github](https://eule.wtf/stats/github)
+
+## usage
+visit the website at [eule.wtf](https://eule.wtf) or send a POST request like
+```console
+curl -X POST -H "Content-Type: application/json" -d '{"destination": "https://github.com/Eulentier161/url-shortener", "slug": "github"}' https://eule.wtf/api
+```
 
 ## selfhosting
 
