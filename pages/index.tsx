@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState, useCallback, ReactFragment } from 'react';
+import { useEffect, useState, useCallback, type ChangeEvent, type MouseEvent } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { validateSlug, validateUrl } from '../utils/validators';
 import debounce from 'lodash.debounce';
+import type { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 
-export default function Home() {
+export default function Home({ uwu }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [slug, setSlug] = useState('');
   const [destination, setDestination] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -20,26 +21,26 @@ export default function Home() {
   const checkSlugAvailability = debounce((slug: string) => {
     axios
       .get('/api/slug-available', {
-        params: { slug },
+        params: { slug }
       })
       .then((res) => {
         setSlugIsAvailable(res.data);
       });
   }, 500);
 
-  const handleSlugInput = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSlugInput = useCallback(async (e: ChangeEvent<HTMLInputElement>) => {
     setSlugIsAvailable(null);
     setSlug(e.target.value);
     setSlugIsValid(validateSlug(e.target.value));
     checkSlugAvailability(e.target.value);
   }, []);
 
-  const handleDestinationInput = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDestinationInput = useCallback(async (e: ChangeEvent<HTMLInputElement>) => {
     setDestination(e.target.value);
     setUrlIsValid(validateUrl(e.target.value));
   }, []);
 
-  async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
+  async function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setButtonDisabled(true);
     await axios
@@ -63,18 +64,18 @@ export default function Home() {
   }
 
   return (
-    <div className='container'>
+    <div className={`container${uwu ? ' uwu' : ''}`}>
       <form>
         {newUrl ? (
           <>
             <p>
-              Try your new url:{' '}
-              <a href={newUrl} target='_blank' rel='noopener noreferrer'>
+              Try your n{uwu && 'y'}ew url:{' '}
+              <a href={newUrl} target="_blank" rel="noopener noreferrer">
                 {newUrl}
               </a>
             </p>
             <button
-              className='btn-enabled'
+              className="btn-enabled"
               onClick={() => {
                 setSlug('');
                 setDestination('');
@@ -90,19 +91,19 @@ export default function Home() {
         ) : (
           <>
             <p>
-              NAME?<br></br>
+              N{uwu && 'Y'}AME?{uwu && " (⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄)"}<br></br>
               <input
                 className={slugIsValid && slugIsAvailable ? '' : 'invalidInput'}
-                placeholder='slug'
+                placeholder={uwu ? 'sluggy_wuggy' : 'slug'}
                 value={slug}
                 onChange={handleSlugInput}
               />
             </p>
             <p>
-              WHERE <b>TO</b>?<br></br>
+              WHERE <b>TO</b>?{uwu && ' (/▽＼*)｡o○♡'}<br></br>
               <input
                 className={urlIsValid ? '' : 'invalidInput'}
-                placeholder='https://github.com/Eulentier161/url-shortener'
+                placeholder={uwu ? 'https://danbooru.donmai.us/' : 'https://github.com/Eulentier161/url-shortener'}
                 value={destination}
                 onChange={handleDestinationInput}
               />
@@ -113,13 +114,17 @@ export default function Home() {
                 disabled={buttonDisabled}
                 onClick={handleSubmit}
               >
-                <b>GENERATE</b>
+                <b>{uwu ? '~*NYAN' : 'GEN'}ERATE</b>
               </button>
             </p>
           </>
         )}
       </form>
-      <ToastContainer position='bottom-right' theme='dark' />
+      <ToastContainer position="bottom-right" theme="dark" />
     </div>
   );
 }
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  return { props: { uwu: Object.keys(ctx.query).includes('uwu') } };
+};
