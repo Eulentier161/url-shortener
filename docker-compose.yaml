@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: "postgres:18"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=drizzle
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - default
+    volumes:
+      - postgres_data:/var/lib/postgresql
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        POSTGRES_URL: "postgresql://postgres:postgres@postgres:5432/drizzle"
+    environment:
+      - POSTGRES_URL=postgresql://postgres:postgres@postgres:5432/drizzle
+      - PUBLIC_BASE_URL=https://eule.wtf
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - default
+
+networks:
+  default:
+volumes:
+  postgres_data:
