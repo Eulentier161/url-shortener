@@ -101,7 +101,7 @@ export default function Form() {
                       await navigator.share({
                         title: state.slug,
                         text:
-                          "A shortened URL created" + window.location.origin,
+                          "A shortened URL created with " + window.location.origin,
                         url: state.url,
                       })
                     }}
