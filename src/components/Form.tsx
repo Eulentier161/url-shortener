@@ -9,7 +9,11 @@ import {
 } from "@headlessui/react"
 import { CheckIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
-import { useState, useTransition } from "react"
+import {
+  ComponentPropsWithoutRef,
+  useState,
+  useTransition
+} from "react"
 import Input from "./Input"
 
 const ShareIcon = () => (
@@ -26,6 +30,22 @@ const ShareIcon = () => (
       strokeLinejoin="round"
       d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
     />
+  </svg>
+)
+
+const DiceIcon = (props: ComponentPropsWithoutRef<"svg">) => (
+  <svg
+    className="h-full aspect-square"
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 640 512"
+    height="200px"
+    width="200px"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"></path>
   </svg>
 )
 
@@ -101,7 +121,8 @@ export default function Form() {
                       await navigator.share({
                         title: state.slug,
                         text:
-                          "A shortened URL created with " + window.location.origin,
+                          "A shortened URL created with " +
+                          window.location.origin,
                         url: state.url,
                       })
                     }}
@@ -133,17 +154,21 @@ export default function Form() {
           })
         }}
       >
-        <Input
-          label="Slug"
-          id="slug"
-          name="slug"
-          type="text"
-          placeholder="github"
-          required
-          disabled={pending}
-          errors={state?.properties?.slug?.errors}
-          onChange={() => setState(null)}
-        />
+        <div className="flex">
+          <Input
+            label="Slug"
+            id="slug"
+            name="slug"
+            type="text"
+            placeholder="github"
+            required
+            disabled={pending}
+            errors={state?.properties?.slug?.errors}
+            onChange={() => setState(null)}
+            icon={<DiceIcon className="size-9" />}
+          />
+          
+        </div>
         <Input
           label="URL"
           id="url"
