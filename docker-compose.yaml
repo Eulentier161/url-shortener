@@ -24,7 +24,7 @@ services:
       - POSTGRES_URL=postgresql://postgres:postgres@postgres:5432/drizzle
       - PUBLIC_BASE_URL=https://eule.wtf
     ports:
-      - "3000:3000"
+      - "5678:3000"
     depends_on:
       postgres:
         condition: service_healthy

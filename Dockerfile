@@ -9,9 +9,11 @@ FROM base AS deps
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* .yarnrc.yml ./
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
+# Create .yarnrc.yml without yarnPath to use corepack's yarn
+RUN echo "nodeLinker: node-modules" > .yarnrc.yml
 RUN \
-    if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+    if [ -f yarn.lock ]; then yarn install; \
     elif [ -f package-lock.json ]; then npm ci; \
     elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
     else echo "Lockfile not found." && exit 1; \
@@ -23,6 +25,8 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# Override .yarnrc.yml to use corepack's yarn instead of custom path
+RUN echo "nodeLinker: node-modules" > .yarnrc.yml
 
 ARG POSTGRES_URL
 ENV POSTGRES_URL=${POSTGRES_URL}
