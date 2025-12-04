@@ -1,22 +1,18 @@
-"use client"
+"use client";
 
-import { ExclamationCircleIcon } from "@heroicons/react/16/solid"
-import clsx from "clsx"
-import { nanoid } from "nanoid"
-import {
-  type ComponentPropsWithoutRef,
-  type JSX,
-  useState
-} from "react"
+import { ExclamationCircleIcon } from "@heroicons/react/16/solid";
+import clsx from "clsx";
+import { nanoid } from "nanoid";
+import { type ComponentPropsWithoutRef, type JSX, useState } from "react";
 
 export default function Example(
   props: Omit<ComponentPropsWithoutRef<"input">, "className"> & {
-    label: string
-    errors?: string[]
-    icon?: JSX.Element
-  }
+    label: string;
+    errors?: string[];
+    icon?: JSX.Element;
+  },
 ) {
-  const [slug, setSlug] = useState<string>("")
+  const [slug, setSlug] = useState<string>("");
 
   return (
     <div className="w-full">
@@ -36,7 +32,7 @@ export default function Example(
               "col-start-1 row-start-1 block w-full rounded-md bg-white py-1.5 pr-10 pl-3  outline-1 -outline-offset-1  focus:outline-2 focus:-outline-offset-2 sm:pr-9 sm:text-sm/6 dark:bg-white/5",
               props.errors
                 ? "text-red-900 outline-red-300 placeholder:text-red-300 focus:outline-red-600 dark:text-red-400 dark:outline-red-500/50 dark:placeholder:text-red-400/70 dark:focus:outline-red-400"
-                : "outline-indigo-300 focus:outline-indigo-600 dark:outline-indigo-500/50 dark:focus:outline-indigo-400"
+                : "outline-indigo-300 focus:outline-indigo-600 dark:outline-indigo-500/50 dark:focus:outline-indigo-400",
             )}
           />
           <div onClick={() => void setSlug(nanoid())}>{props.icon}</div>
@@ -55,5 +51,5 @@ export default function Example(
         {props.errors?.join(", ")}
       </p>
     </div>
-  )
+  );
 }
