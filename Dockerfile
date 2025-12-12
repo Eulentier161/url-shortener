@@ -12,19 +12,15 @@ WORKDIR /app
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 # Create .yarnrc.yml without yarnPath to use corepack's yarn
 RUN echo "nodeLinker: node-modules" > .yarnrc.yml
-RUN \
-    if [ -f yarn.lock ]; then yarn install; \
-    elif [ -f package-lock.json ]; then npm ci; \
-    elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-    else echo "Lockfile not found." && exit 1; \
-    fi
-
+RUN yarn install
 
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+COPY --from=deps /app/package.json ./package.json
+COPY --from=deps /app/yarn.lock ./yarn.lock
 # Override .yarnrc.yml to use corepack's yarn instead of custom path
 RUN echo "nodeLinker: node-modules" > .yarnrc.yml
 
@@ -35,12 +31,7 @@ ENV POSTGRES_URL=${POSTGRES_URL}
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN \
-    if [ -f yarn.lock ]; then yarn run build; \
-    elif [ -f package-lock.json ]; then npm run build; \
-    elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
-    else echo "Lockfile not found." && exit 1; \
-    fi
+RUN yarn run build
 
 # Production image, copy all the files and run next
 FROM base AS runner

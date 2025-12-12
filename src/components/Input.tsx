@@ -23,7 +23,7 @@ export default function Example(
         {props.label}
       </label>
       <div className="mt-2 grid grid-cols-1">
-        <div className="flex gap-2">
+        <div className={clsx("flex", props.icon && "gap-2")}>
           <input
             {...props}
             value={slug}
@@ -35,7 +35,7 @@ export default function Example(
                 : "outline-indigo-300 focus:outline-indigo-600 dark:outline-indigo-500/50 dark:focus:outline-indigo-400",
             )}
           />
-          <div onClick={() => void setSlug(nanoid())}>{props.icon}</div>
+          {props.icon && <div onClick={() => void setSlug(nanoid())}>{props.icon}</div>}
         </div>
         {props.errors && (
           <ExclamationCircleIcon
