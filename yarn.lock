@@ -1257,58 +1257,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@libsql/client@npm:^0.15.15":
-  version: 0.15.15
-  resolution: "@libsql/client@npm:0.15.15"
+"@libsql/client@npm:^0.17.4":
+  version: 0.17.4
+  resolution: "@libsql/client@npm:0.17.4"
   dependencies:
-    "@libsql/core": ^0.15.14
-    "@libsql/hrana-client": ^0.7.0
+    "@libsql/core": ^0.17.4
+    "@libsql/hrana-client": ^0.10.0
     js-base64: ^3.7.5
-    libsql: ^0.5.22
+    libsql: ^0.5.28
     promise-limit: ^2.7.0
-  checksum: add5837d06f45231cf57e676cc414acfedfc17f9281f4ecc5361720808ce4f2b8f9f5cc25deb662556c9b30180917bede6df3ef9f619eeb1c8b464310bc602a3
+  checksum: 3dcbb666dd7db3fdfb6d7579f8be448802791e423f0685cd023e903106491deab1d2019f9c647d68e9ad28dd25d0492915eef9be3d0250e58c39472fd5500da1
   languageName: node
   linkType: hard
 
-"@libsql/core@npm:^0.15.14":
-  version: 0.15.15
-  resolution: "@libsql/core@npm:0.15.15"
+"@libsql/core@npm:^0.17.4":
+  version: 0.17.4
+  resolution: "@libsql/core@npm:0.17.4"
   dependencies:
     js-base64: ^3.7.5
-  checksum: f0e57af5b12aa7f0dfc0a786fec72d7e81d9522d809ce8df952abd9115604a7eb83e1dee9469237ae0f477a83b3b2d7a609963c6d7492e21a85ce8db14655e15
+  checksum: 7d7c7f246587c8e1aee9fbabbefaffff5fc2ee19fe908c0ed3fb0e64de1320931534eb97c7c7b8809474d78d6e74ecd53dbc5405da3d5de10713eb1450450ed7
   languageName: node
   linkType: hard
 
-"@libsql/darwin-arm64@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/darwin-arm64@npm:0.5.22"
+"@libsql/darwin-arm64@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/darwin-arm64@npm:0.5.29"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@libsql/darwin-x64@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/darwin-x64@npm:0.5.22"
+"@libsql/darwin-x64@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/darwin-x64@npm:0.5.29"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@libsql/hrana-client@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "@libsql/hrana-client@npm:0.7.0"
+"@libsql/hrana-client@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "@libsql/hrana-client@npm:0.10.0"
   dependencies:
-    "@libsql/isomorphic-fetch": ^0.3.1
     "@libsql/isomorphic-ws": ^0.1.5
     js-base64: ^3.7.5
-    node-fetch: ^3.3.2
-  checksum: 0d36931ca3a01144dc14294d1d9666ee64724c6ab4889890ff0bc45564369503f6abccbc448518485af107bd69f49d35878059c46d98dacb34db4757b52c406a
-  languageName: node
-  linkType: hard
-
-"@libsql/isomorphic-fetch@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "@libsql/isomorphic-fetch@npm:0.3.1"
-  checksum: 9f131cae3b14c39712f1140e21b2ab1ccc81b5f6ad2aa90d739dc8df0602109a5c4c0ea820dcd39632ace7a4b247bc31e2a5e79cd6efaf5f1777650aac9ac694
+  checksum: d5aacbdce90afca62ac1767e17bdb75337d72b6bd5bcfad70898b70afe71e857f6a9373c18ec8c34716b08b8e1bffdb55b2fe891ca8476622c5524d24d6d14e3
   languageName: node
   linkType: hard
 
@@ -1322,51 +1313,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@libsql/linux-arm-gnueabihf@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/linux-arm-gnueabihf@npm:0.5.22"
+"@libsql/linux-arm-gnueabihf@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/linux-arm-gnueabihf@npm:0.5.29"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@libsql/linux-arm-musleabihf@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/linux-arm-musleabihf@npm:0.5.22"
+"@libsql/linux-arm-musleabihf@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/linux-arm-musleabihf@npm:0.5.29"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@libsql/linux-arm64-gnu@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/linux-arm64-gnu@npm:0.5.22"
+"@libsql/linux-arm64-gnu@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/linux-arm64-gnu@npm:0.5.29"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@libsql/linux-arm64-musl@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/linux-arm64-musl@npm:0.5.22"
+"@libsql/linux-arm64-musl@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/linux-arm64-musl@npm:0.5.29"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@libsql/linux-x64-gnu@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/linux-x64-gnu@npm:0.5.22"
+"@libsql/linux-x64-gnu@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/linux-x64-gnu@npm:0.5.29"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@libsql/linux-x64-musl@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/linux-x64-musl@npm:0.5.22"
+"@libsql/linux-x64-musl@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/linux-x64-musl@npm:0.5.29"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@libsql/win32-x64-msvc@npm:0.5.22":
-  version: 0.5.22
-  resolution: "@libsql/win32-x64-msvc@npm:0.5.22"
+"@libsql/win32-x64-msvc@npm:0.5.29":
+  version: 0.5.29
+  resolution: "@libsql/win32-x64-msvc@npm:0.5.29"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -1400,74 +1391,74 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/env@npm:16.2.6"
-  checksum: e6ce027612431cad2c7cc8131eb0f287afd505e8b883e738a8e6ce6afbed20512b538c9dad5e7f52f10474e87c95ad77478f65cf90e48c022a5d87d3a0bea9cf
+"@next/env@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/env@npm:16.2.9"
+  checksum: 11b1454b93296b3753cfb0614fbeed6a28ad0dd67e723254722bbd8ddf6c09e20890420ec1e1756433c5cef2df398a7d155cc133b3865712ec8131fadd2bec4e
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/eslint-plugin-next@npm:16.2.6"
+"@next/eslint-plugin-next@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/eslint-plugin-next@npm:16.2.9"
   dependencies:
     fast-glob: 3.3.1
-  checksum: 694fa2433fcd1b022ec692a4686f047e9e6ea69da00be5f5207792d02e8122e5406efc3fa5ca4aea7e46f8b3afc993e607e4272771ed2c2f1f1e8957a0924aaf
+  checksum: 67f63157f3a8cb7f2b6f26aa69611d0fe31e60b4a66fa312f4f0eebb9a6790b9784f5ea27a35cffb66d43935a75df8bff1e429d7ee3a0c9d4af6541af95cd494
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/swc-darwin-arm64@npm:16.2.6"
+"@next/swc-darwin-arm64@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/swc-darwin-arm64@npm:16.2.9"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/swc-darwin-x64@npm:16.2.6"
+"@next/swc-darwin-x64@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/swc-darwin-x64@npm:16.2.9"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/swc-linux-arm64-gnu@npm:16.2.6"
+"@next/swc-linux-arm64-gnu@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/swc-linux-arm64-gnu@npm:16.2.9"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/swc-linux-arm64-musl@npm:16.2.6"
+"@next/swc-linux-arm64-musl@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/swc-linux-arm64-musl@npm:16.2.9"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/swc-linux-x64-gnu@npm:16.2.6"
+"@next/swc-linux-x64-gnu@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/swc-linux-x64-gnu@npm:16.2.9"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/swc-linux-x64-musl@npm:16.2.6"
+"@next/swc-linux-x64-musl@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/swc-linux-x64-musl@npm:16.2.9"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/swc-win32-arm64-msvc@npm:16.2.6"
+"@next/swc-win32-arm64-msvc@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/swc-win32-arm64-msvc@npm:16.2.9"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:16.2.6":
-  version: 16.2.6
-  resolution: "@next/swc-win32-x64-msvc@npm:16.2.6"
+"@next/swc-win32-x64-msvc@npm:16.2.9":
+  version: 16.2.9
+  resolution: "@next/swc-win32-x64-msvc@npm:16.2.9"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -1900,12 +1891,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:19.2.14":
-  version: 19.2.14
-  resolution: "@types/react@npm:19.2.14"
+"@types/react@npm:19.2.17":
+  version: 19.2.17
+  resolution: "@types/react@npm:19.2.17"
   dependencies:
     csstype: ^3.2.2
-  checksum: ddd330292abf2dc2cfa65188e1c5f67cc6e90f8d8ffb088f753a38db9d123f942c23d324a6b7e8027ff04f22b395492150f54b9b520b6cbec1e8841e669f2c19
+  checksum: 9704dc2001b6bcc32efc6e3fe144e18c411d5ee8a5c8dfe572535e44bd300424c4e7bddc9314299eeec28efb547816368b5c9851c93a3082e8ad1265786f3d31
   languageName: node
   linkType: hard
 
@@ -2638,13 +2629,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"data-uri-to-buffer@npm:^4.0.0":
-  version: 4.0.1
-  resolution: "data-uri-to-buffer@npm:4.0.1"
-  checksum: 0d0790b67ffec5302f204c2ccca4494f70b4e2d940fea3d36b09f0bb2b8539c2e86690429eb1f1dc4bcc9e4df0644193073e63d9ee48ac9fce79ec1506e4aa4c
-  languageName: node
-  linkType: hard
-
 "data-view-buffer@npm:^1.0.2":
   version: 1.0.2
   resolution: "data-view-buffer@npm:1.0.2"
@@ -3360,11 +3344,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:16.2.6":
-  version: 16.2.6
-  resolution: "eslint-config-next@npm:16.2.6"
+"eslint-config-next@npm:16.2.9":
+  version: 16.2.9
+  resolution: "eslint-config-next@npm:16.2.9"
   dependencies:
-    "@next/eslint-plugin-next": 16.2.6
+    "@next/eslint-plugin-next": 16.2.9
     eslint-import-resolver-node: ^0.3.6
     eslint-import-resolver-typescript: ^3.5.2
     eslint-plugin-import: ^2.32.0
@@ -3379,7 +3363,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 719f1e9d69a04e8b20e77fd1ac5cf333052cee9546d6b1480ddf71a2417b9c037ef756603c0a7f772f2d98987cdeb922a70c767ba8f26978d76d81ed764a0186
+  checksum: 2d59e7bcbe09eea577e932770118d0309eff7b0bd7e64e1293336214de9dc2c1223eef95615770eb7131017c2c398817473d5f6c3eb0a3e9ae433e2dfd4988dd
   languageName: node
   linkType: hard
 
@@ -3705,16 +3689,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fetch-blob@npm:^3.1.2, fetch-blob@npm:^3.1.4":
-  version: 3.2.0
-  resolution: "fetch-blob@npm:3.2.0"
-  dependencies:
-    node-domexception: ^1.0.0
-    web-streams-polyfill: ^3.0.3
-  checksum: f19bc28a2a0b9626e69fd7cf3a05798706db7f6c7548da657cbf5026a570945f5eeaedff52007ea35c8bcd3d237c58a20bf1543bc568ab2422411d762dd3d5bf
-  languageName: node
-  linkType: hard
-
 "file-entry-cache@npm:^8.0.0":
   version: 8.0.0
   resolution: "file-entry-cache@npm:8.0.0"
@@ -3776,15 +3750,6 @@ __metadata:
     cross-spawn: ^7.0.6
     signal-exit: ^4.0.1
   checksum: b2c1a6fc0bf0233d645d9fefdfa999abf37db1b33e5dab172b3cbfb0662b88bfbd2c9e7ab853533d199050ec6b65c03fcf078fc212d26e4990220e98c6930eef
-  languageName: node
-  linkType: hard
-
-"formdata-polyfill@npm:^4.0.10":
-  version: 4.0.10
-  resolution: "formdata-polyfill@npm:4.0.10"
-  dependencies:
-    fetch-blob: ^3.1.2
-  checksum: 82a34df292afadd82b43d4a740ce387bc08541e0a534358425193017bf9fb3567875dc5f69564984b1da979979b70703aa73dee715a17b6c229752ae736dd9db
   languageName: node
   linkType: hard
 
@@ -4580,19 +4545,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"libsql@npm:^0.5.22":
-  version: 0.5.22
-  resolution: "libsql@npm:0.5.22"
+"libsql@npm:^0.5.28":
+  version: 0.5.29
+  resolution: "libsql@npm:0.5.29"
   dependencies:
-    "@libsql/darwin-arm64": 0.5.22
-    "@libsql/darwin-x64": 0.5.22
-    "@libsql/linux-arm-gnueabihf": 0.5.22
-    "@libsql/linux-arm-musleabihf": 0.5.22
-    "@libsql/linux-arm64-gnu": 0.5.22
-    "@libsql/linux-arm64-musl": 0.5.22
-    "@libsql/linux-x64-gnu": 0.5.22
-    "@libsql/linux-x64-musl": 0.5.22
-    "@libsql/win32-x64-msvc": 0.5.22
+    "@libsql/darwin-arm64": 0.5.29
+    "@libsql/darwin-x64": 0.5.29
+    "@libsql/linux-arm-gnueabihf": 0.5.29
+    "@libsql/linux-arm-musleabihf": 0.5.29
+    "@libsql/linux-arm64-gnu": 0.5.29
+    "@libsql/linux-arm64-musl": 0.5.29
+    "@libsql/linux-x64-gnu": 0.5.29
+    "@libsql/linux-x64-musl": 0.5.29
+    "@libsql/win32-x64-msvc": 0.5.29
     "@neon-rs/load": ^0.0.4
     detect-libc: 2.0.2
   dependenciesMeta:
@@ -4614,7 +4579,7 @@ __metadata:
       optional: true
     "@libsql/win32-x64-msvc":
       optional: true
-  checksum: 8c3a14bde553d81fa686f9cb7eed78736abc47baa981cf3943ca12db1b2598dc6ebca5431f442bcbc645f23e96a06070d8453f6e78c937e600515a75b54bd796
+  checksum: a204aa2383c63a1e235f81007de52e95524908a7ecff41ec226d6c344fc1913dfad9bdab1a0cc05e07612ac4e73740a306c53ceae950f8d77e4527ed5930ace9
   conditions: (os=darwin | os=linux | os=win32) & (cpu=x64 | cpu=arm64 | cpu=wasm32 | cpu=arm)
   languageName: node
   linkType: hard
@@ -4988,19 +4953,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:16.2.6":
-  version: 16.2.6
-  resolution: "next@npm:16.2.6"
+"next@npm:16.2.9":
+  version: 16.2.9
+  resolution: "next@npm:16.2.9"
   dependencies:
-    "@next/env": 16.2.6
-    "@next/swc-darwin-arm64": 16.2.6
-    "@next/swc-darwin-x64": 16.2.6
-    "@next/swc-linux-arm64-gnu": 16.2.6
-    "@next/swc-linux-arm64-musl": 16.2.6
-    "@next/swc-linux-x64-gnu": 16.2.6
-    "@next/swc-linux-x64-musl": 16.2.6
-    "@next/swc-win32-arm64-msvc": 16.2.6
-    "@next/swc-win32-x64-msvc": 16.2.6
+    "@next/env": 16.2.9
+    "@next/swc-darwin-arm64": 16.2.9
+    "@next/swc-darwin-x64": 16.2.9
+    "@next/swc-linux-arm64-gnu": 16.2.9
+    "@next/swc-linux-arm64-musl": 16.2.9
+    "@next/swc-linux-x64-gnu": 16.2.9
+    "@next/swc-linux-x64-musl": 16.2.9
+    "@next/swc-win32-arm64-msvc": 16.2.9
+    "@next/swc-win32-x64-msvc": 16.2.9
     "@swc/helpers": 0.5.15
     baseline-browser-mapping: ^2.9.19
     caniuse-lite: ^1.0.30001579
@@ -5044,25 +5009,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 739308cebe18ee6c70b7ec40c6059e2d5ea7c8adfb918ed7761a64d9664091730875665df07fc7812001ccd3b5f16e10c5d095e9f2685ee1b2396d80374c76b9
-  languageName: node
-  linkType: hard
-
-"node-domexception@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "node-domexception@npm:1.0.0"
-  checksum: ee1d37dd2a4eb26a8a92cd6b64dfc29caec72bff5e1ed9aba80c294f57a31ba4895a60fd48347cf17dd6e766da0ae87d75657dfd1f384ebfa60462c2283f5c7f
-  languageName: node
-  linkType: hard
-
-"node-fetch@npm:^3.3.2":
-  version: 3.3.2
-  resolution: "node-fetch@npm:3.3.2"
-  dependencies:
-    data-uri-to-buffer: ^4.0.0
-    fetch-blob: ^3.1.4
-    formdata-polyfill: ^4.0.10
-  checksum: 06a04095a2ddf05b0830a0d5302699704d59bda3102894ea64c7b9d4c865ecdff2d90fd042df7f5bc40337266961cb6183dcc808ea4f3000d024f422b462da92
+  checksum: 58c819752172e27b458831e75d1e160f8b217140c4e5551ce0b9d37070629220ecaacf4344a4bfffa8981f89485051d3a2b8b3c7f8721c981e221f73e2f0ecc2
   languageName: node
   linkType: hard
 
@@ -5491,14 +5438,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.2.6":
-  version: 19.2.6
-  resolution: "react-dom@npm:19.2.6"
+"react-dom@npm:19.2.7":
+  version: 19.2.7
+  resolution: "react-dom@npm:19.2.7"
   dependencies:
     scheduler: ^0.27.0
   peerDependencies:
-    react: ^19.2.6
-  checksum: 9ecaff123867286a8fd18fb1028f0b493da4a48faacd38d97d4bde16c756d314869836ae74cd95733c5ebcff8e2cb568d0c06a1b18e2e7482eb898cc5b8dd92f
+    react: ^19.2.7
+  checksum: 9543b532a070c91751dd9aae77f5ee21d2aeada28e061080162433a5418f8ba98eadb869c76d82eff9f0475e5ff2b9e1cf31916ab6509f8ebc856be77361eb1c
   languageName: node
   linkType: hard
 
@@ -5509,10 +5456,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.2.6":
-  version: 19.2.6
-  resolution: "react@npm:19.2.6"
-  checksum: e250029064bff3f3308ee61e52c44bc9a0c938f6ef11a3f39c31db487ca173eb9b4b0cd3261e32613d3498df0da5586f3c582bc83cef54ad99bc5643772c4535
+"react@npm:19.2.7":
+  version: 19.2.7
+  resolution: "react@npm:19.2.7"
+  checksum: be94ec2f1779b27cac328ddae18e52933c2977a2425b67039229ead45c62d0363b66e894076236616c8d98821a9a760fcbab8a9da8ae9c4b2849dfd12cc32a46
   languageName: node
   linkType: hard
 
@@ -6486,12 +6433,12 @@ __metadata:
   dependencies:
     "@headlessui/react": ^2.2.9
     "@heroicons/react": ^2.2.0
-    "@libsql/client": ^0.15.15
+    "@libsql/client": ^0.17.4
     "@tailwindcss/postcss": ^4
     "@types/lodash": ^4.17.20
     "@types/node": ^20
     "@types/pg": ^8.15.6
-    "@types/react": 19.2.14
+    "@types/react": 19.2.17
     "@types/react-dom": 19.2.3
     animejs: ^4.2.2
     clsx: ^2.1.1
@@ -6499,15 +6446,15 @@ __metadata:
     drizzle-kit: ^0.31.7
     drizzle-orm: ^0.45.2
     eslint: ^9
-    eslint-config-next: 16.2.6
+    eslint-config-next: 16.2.9
     glob: ^11.1.0
     lodash: ^4.18.0
     nanoid: ^5.1.6
-    next: 16.2.6
+    next: 16.2.9
     pg: ^8.16.3
     prettier: ^3.7.4
-    react: 19.2.6
-    react-dom: 19.2.6
+    react: 19.2.7
+    react-dom: 19.2.7
     tailwindcss: ^4
     tsx: ^4.22.0
     typescript: ^5
@@ -6522,13 +6469,6 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
   checksum: 61a62e910713adfaf91bdb72ff2cd30e5ba83687accaf3b6e75a903b45bf635f5722e3694af30d83a03e92cb533c0a5c699298d2fef639a03ffc86b469f4eee2
-  languageName: node
-  linkType: hard
-
-"web-streams-polyfill@npm:^3.0.3":
-  version: 3.3.3
-  resolution: "web-streams-polyfill@npm:3.3.3"
-  checksum: 21ab5ea08a730a2ef8023736afe16713b4f2023ec1c7085c16c8e293ee17ed085dff63a0ad8722da30c99c4ccbd4ccd1b2e79c861829f7ef2963d7de7004c2cb
   languageName: node
   linkType: hard
 
