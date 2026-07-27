@@ -9,18 +9,14 @@ FROM base AS deps
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
-# Create .yarnrc.yml without yarnPath to use corepack's yarn
-RUN echo "nodeLinker: node-modules" > .yarnrc.yml
-RUN yarn install
+COPY package.json package-lock.json* .npmrc* ./
+RUN npm ci
 
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# Ensure .yarnrc.yml is consistent with deps stage and remove .yarn cache
-RUN echo "nodeLinker: node-modules" > .yarnrc.yml && rm -rf .yarn
 
 ARG POSTGRES_URL
 ENV POSTGRES_URL=${POSTGRES_URL}
