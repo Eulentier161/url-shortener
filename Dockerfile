@@ -19,10 +19,8 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-COPY --from=deps /app/package.json ./package.json
-COPY --from=deps /app/yarn.lock ./yarn.lock
-# Override .yarnrc.yml to use corepack's yarn instead of custom path
-RUN echo "nodeLinker: node-modules" > .yarnrc.yml
+# Ensure .yarnrc.yml is consistent with deps stage and remove .yarn cache
+RUN echo "nodeLinker: node-modules" > .yarnrc.yml && rm -rf .yarn
 
 ARG POSTGRES_URL
 ENV POSTGRES_URL=${POSTGRES_URL}
@@ -31,7 +29,7 @@ ENV POSTGRES_URL=${POSTGRES_URL}
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN yarn run build
+RUN ./node_modules/.bin/next build
 
 # Production image, copy all the files and run next
 FROM base AS runner
